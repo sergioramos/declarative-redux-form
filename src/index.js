@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import isEqual from 'lodash.isequal';
+import isUndefined from 'lodash.isundefined';
 
 const fields = {
   asyncBlurFields: PropTypes.arrayOf(PropTypes.string),
@@ -40,7 +41,7 @@ export default class ReduxForm extends Component {
     fieldKeys.some(name => !isEqual(prevProps[name], nextProps[name]));
 
   static getReduxFormProps = props =>
-    fieldKeys.reduce(
+    fieldKeys.filter(name => !isUndefined(props[name])).reduce(
       (all, name) => ({
         ...all,
         [name]: props[name]
