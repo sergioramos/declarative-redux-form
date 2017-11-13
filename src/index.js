@@ -78,7 +78,7 @@ export default class ReduxForm extends Component {
   };
 
   render = () => {
-    const { parentProps } = ReduxForm.cleanReduxFormProps(this.props);
+    const parentProps = ReduxForm.cleanReduxFormProps(this.props);
     const { Form } = this.state;
 
     return React.createElement(Form, parentProps);
