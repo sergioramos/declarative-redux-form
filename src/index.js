@@ -87,6 +87,6 @@ export default class ReduxForm extends Component {
 }
 
 ReduxForm.propTypes = {
-  children: PropTypes.func.required,
+  children: PropTypes.func.isRequired,
   ...fields
 };

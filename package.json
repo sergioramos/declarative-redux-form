@@ -1,6 +1,6 @@
 {
   "name": "declarative-redux-form",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "BSD-3-Clause",
   "description": "declarative redux-form",
   "keywords": ["redux", "react", "redux-form", "declarative"],
