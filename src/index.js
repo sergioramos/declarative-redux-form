@@ -58,8 +58,8 @@ export default class ReduxForm extends Component {
   createReduxForm = props => reduxForm(this.getReduxFormProps(props));
 
   componentWillReceiveProps(nextProps) {
-    const _currProps = ReduxForm.getReduxFormProps(this.props);
-    const _nextProps = ReduxForm.getReduxFormProps(nextProps);
+    const _currProps = this.getReduxFormProps(this.props);
+    const _nextProps = this.getReduxFormProps(nextProps);
 
     if (!ReduxForm.didPropsChange(_currProps, _nextProps)) {
       return;
