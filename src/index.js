@@ -57,24 +57,11 @@ export default class ReduxForm extends Component {
 
   createReduxForm = props => reduxForm(this.getReduxFormProps(props));
 
-  static cleanReduxFormProps = props =>
-    Object.keys(props)
-      .filter(name => fieldKeys.indexOf(name) < 0)
-      .reduce(
-        (all, name) => ({
-          ...all,
-          [name]: props[name]
-        }),
-        {}
-      );
-
   componentWillReceiveProps(nextProps) {
-    if (
-      !ReduxForm.didPropsChange(
-        ReduxForm.didPropsChange(this.props),
-        ReduxForm.didPropsChange(nextProps)
-      )
-    ) {
+    const _currProps = ReduxForm.getReduxFormProps(this.props);
+    const _nextProps = ReduxForm.getReduxFormProps(nextProps);
+
+    if (!ReduxForm.didPropsChange(_currProps, _nextProps)) {
       return;
     }
 
@@ -89,10 +76,8 @@ export default class ReduxForm extends Component {
   };
 
   render = () => {
-    const parentProps = ReduxForm.cleanReduxFormProps(this.props);
     const { Form } = this.state;
-
-    return React.createElement(Form, parentProps);
+    return React.createElement(Form);
   };
 }
 
