@@ -32,25 +32,30 @@ export default class ReduxForm extends Component {
   constructor(args) {
     super(args);
 
+    Object.keys(fields).forEach(name => {
+      this[`_${name}`] = ReduxForm.propagate(this, name);
+    });
+
     this.state = {
-      Form: ReduxForm.createReduxForm(this.props)(this.renderForm)
+      Form: this.createReduxForm(this.props)(this.renderForm)
     };
   }
 
   static didPropsChange = (prevProps, nextProps) =>
     fieldKeys.some(name => !isEqual(prevProps[name], nextProps[name]));
 
-  static getReduxFormProps = props =>
+  static propagate = (self, name) => (...args) => self.props[name](...args);
+
+  getReduxFormProps = props =>
     fieldKeys.filter(name => !isUndefined(props[name])).reduce(
       (all, name) => ({
         ...all,
-        [name]: props[name]
+        [name]: fields[name] === PropTypes.func ? this[`_${name}`] : props[name]
       }),
       {}
     );
 
-  static createReduxForm = props =>
-    reduxForm(ReduxForm.getReduxFormProps(props));
+  createReduxForm = props => reduxForm(this.getReduxFormProps(props));
 
   static cleanReduxFormProps = props =>
     Object.keys(props)
@@ -64,12 +69,17 @@ export default class ReduxForm extends Component {
       );
 
   componentWillReceiveProps(nextProps) {
-    if (ReduxForm.didPropsChange(this.props, nextProps)) {
+    if (
+      !ReduxForm.didPropsChange(
+        ReduxForm.didPropsChange(this.props),
+        ReduxForm.didPropsChange(nextProps)
+      )
+    ) {
       return;
     }
 
     this.setState({
-      Form: ReduxForm.createReduxForm(this.props)(this.renderForm)
+      Form: this.createReduxForm(this.props)(this.renderForm)
     });
   }
 

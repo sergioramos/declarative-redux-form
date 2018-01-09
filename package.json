@@ -1,6 +1,6 @@
 {
   "name": "declarative-redux-form",
-  "version": "1.0.3",
+  "version": "2.0.3",
   "license": "BSD-3-Clause",
   "description": "declarative redux-form",
   "keywords": ["redux", "react", "redux-form", "declarative"],
@@ -22,28 +22,28 @@
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.2",
-    "babel-preset-joyent-portal": "^3.3.3",
-    "bup": "^2.0.6",
-    "eslint": "^4.10.0",
+    "babel-eslint": "^8.2.1",
+    "babel-preset-joyent-portal": "^6.0.1",
+    "bup": "^3.0.0",
+    "eslint": "^4.15.0",
     "eslint-config-joyent-portal": "3.2.0",
-    "eslint-config-prettier": "^2.7.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-config-react-app": "^2.0.1",
     "eslint-config-xo-space": "^0.17.0",
-    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-flowtype": "^2.41.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-markdown": "^1.0.0-beta.6",
-    "eslint-plugin-prettier": "^2.3.1",
-    "eslint-plugin-react": "^7.4.0",
-    "prettier": "^1.8.2",
-    "react": "^16.1.0",
-    "redux-form": "^7.1.2"
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "^1.9.2",
+    "react": "^16.2.0",
+    "redux-form": "^7.2.0"
   },
   "peerDependencies": {
-    "react": "^16.1.0",
+    "react": "^16.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-form": "^7.1.2"
+    "redux-form": "^7.2.0"
   }
 }

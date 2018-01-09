@@ -25,6 +25,7 @@ yarn add --dev declarative-redux-form
 ## Usage
 
 ```js
+import React from 'react';
 import ReduxForm from 'declarative-redux-form';
 import { Field } from 'redux-form';
 
