@@ -77,7 +77,7 @@ export default class ReduxForm extends Component {
 
   render = () => {
     const { Form } = this.state;
-    return React.createElement(Form);
+    return React.createElement(Form, this.props, this.props.children);
   };
 }
 
