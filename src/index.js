@@ -37,7 +37,7 @@ export default class ReduxForm extends Component {
     });
 
     this.state = {
-      Form: this.createReduxForm(this.props)(ReduxForm.renderForm(this.props))
+      Form: this.createReduxForm(this.props)(this.renderForm)
     };
   }
 
@@ -45,10 +45,6 @@ export default class ReduxForm extends Component {
     fieldKeys.some(name => !isEqual(prevProps[name], nextProps[name]));
 
   static propagate = (self, name) => (...args) => self.props[name](...args);
-
-  static renderForm = ({ children }) => props => {
-    return children(props);
-  };
 
   getReduxFormProps = props =>
     fieldKeys.filter(name => !isUndefined(props[name])).reduce(
@@ -70,9 +66,14 @@ export default class ReduxForm extends Component {
     }
 
     this.setState({
-      Form: this.createReduxForm(nextProps)(ReduxForm.renderForm(nextProps))
+      Form: this.createReduxForm(nextProps)(this.renderForm)
     });
   }
+
+  renderForm = props => {
+    const { children } = this.props;
+    return children(props);
+  };
 
   render = () => {
     const { Form } = this.state;
